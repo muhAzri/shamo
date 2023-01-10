@@ -8,58 +8,64 @@ class WishlistItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: const EdgeInsets.only(
-        top: 20,
-      ),
+      margin: const EdgeInsets.only(top: 20),
       padding: const EdgeInsets.only(
         top: 10,
         left: 12,
         bottom: 14,
         right: 20,
       ),
-      decoration: BoxDecoration(
+      decoration: _containerDecoration(),
+      child: Row(children: [
+        _productImage(),
+        const SizedBox(width: 12),
+        Expanded(child: _productDetail()),
+        const SizedBox(width: 53),
+        _wishlistButton()
+      ]),
+    );
+  }
+
+  Widget _productImage() {
+    return ClipRRect(
         borderRadius: BorderRadius.circular(12),
-        color: backgroundColor4,
+        child: Image.asset(
+          'assets/images/shoes.png',
+          width: 60,
+          height: 60,
+          fit: BoxFit.cover,
+        ));
+  }
+
+  Widget _productDetail() {
+    return Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+      Text(
+        'Terrex Urban Low',
+        style: whiteTextStyle.copyWith(fontWeight: semiBold),
       ),
-      child: Row(
-        children: [
-          ClipRRect(
-            borderRadius: BorderRadius.circular(12),
-            child: Image.asset(
-              'assets/images/shoes.png',
-              width: 60,
-              height: 60,
-              fit: BoxFit.cover,
-            ),
-          ),
-          const SizedBox(width: 12),
-          Expanded(
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text(
-                  'Terrex Urban Low',
-                  style: whiteTextStyle.copyWith(fontWeight: semiBold),
-                ),
-                const SizedBox(height: 2),
-                Text(
-                  '\$143,98',
-                  style: priceTextStyle,
-                ),
-              ],
-            ),
-          ),
-          const SizedBox(width: 53),
-          WishlistButton(
-            width: 34,
-            height: 34,
-            iconWidth: 12,
-            iconHeight: 10,
-            isActive: true,
-            onTap: () {},
-          ),
-        ],
+      const SizedBox(height: 2),
+      Text(
+        '\$143,98',
+        style: priceTextStyle,
       ),
+    ]);
+  }
+
+  Widget _wishlistButton() {
+    return WishlistButton(
+      width: 34,
+      height: 34,
+      iconWidth: 12,
+      iconHeight: 10,
+      isActive: true,
+      onTap: () {},
+    );
+  }
+
+  BoxDecoration _containerDecoration() {
+    return BoxDecoration(
+      borderRadius: BorderRadius.circular(12),
+      color: backgroundColor4,
     );
   }
 }

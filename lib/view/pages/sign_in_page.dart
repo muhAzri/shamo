@@ -8,57 +8,6 @@ class SignInPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    Widget header() {
-      return Container(
-        margin: EdgeInsets.only(top: defaultMargin),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Text(
-              'Login',
-              style: whiteTextStyle.copyWith(
-                fontSize: 24,
-                fontWeight: semiBold,
-              ),
-            ),
-            const SizedBox(height: 2),
-            Text('Sign In to Countinue', style: greyTextStyle)
-          ],
-        ),
-      );
-    }
-
-    Widget body() {
-      return Container(
-        margin: const EdgeInsets.only(
-          top: 50,
-        ),
-        child: Column(
-          children: [
-            const CustomFormField(
-              title: 'Email Address',
-              icon: 'assets/icons/email.png',
-            ),
-            const CustomFormField(
-              title: 'Your Password',
-              icon: 'assets/icons/password.png',
-              isObsecure: true,
-            ),
-            const SizedBox(
-              height: 30,
-            ),
-            CustomButton(
-              title: 'Sign In',
-              onPressed: () {
-                Navigator.pushNamedAndRemoveUntil(
-                    context, '/home', (route) => false);
-              },
-            ),
-          ],
-        ),
-      );
-    }
-
     return Scaffold(
       backgroundColor: backgroundColor1,
       resizeToAvoidBottomInset: false,
@@ -70,8 +19,8 @@ class SignInPage extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              header(),
-              body(),
+              _buildHeader(),
+              _buildBody(context),
               const Spacer(),
               CustomTextButton(
                 text1: 'Don\'t have an account? ',
@@ -86,6 +35,57 @@ class SignInPage extends StatelessWidget {
             ],
           ),
         ),
+      ),
+    );
+  }
+
+  Widget _buildHeader() {
+    return Container(
+      margin: EdgeInsets.only(top: defaultMargin),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Text(
+            'Login',
+            style: whiteTextStyle.copyWith(
+              fontSize: 24,
+              fontWeight: semiBold,
+            ),
+          ),
+          const SizedBox(height: 2),
+          Text('Sign In to Countinue', style: greyTextStyle)
+        ],
+      ),
+    );
+  }
+
+  Widget _buildBody(BuildContext context) {
+    return Container(
+      margin: const EdgeInsets.only(
+        top: 50,
+      ),
+      child: Column(
+        children: [
+          const CustomFormField(
+            title: 'Email Address',
+            icon: 'assets/icons/email.png',
+          ),
+          const CustomFormField(
+            title: 'Your Password',
+            icon: 'assets/icons/password.png',
+            isObsecure: true,
+          ),
+          const SizedBox(
+            height: 30,
+          ),
+          CustomButton(
+            title: 'Sign In',
+            onPressed: () {
+              Navigator.pushNamedAndRemoveUntil(
+                  context, '/home', (route) => false);
+            },
+          ),
+        ],
       ),
     );
   }

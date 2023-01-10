@@ -21,29 +21,37 @@ class EditProfileItem extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Text(
-            title,
-            style: lightGreyTextStyle.copyWith(
-              fontSize: 13,
-            ),
-          ),
+          _buildTitle(),
           const SizedBox(
             height: 4,
           ),
-          TextFormField(
-            style: whiteTextStyle,
-            controller: controller,
-            decoration: InputDecoration(
-              hintText: hintText,
-              hintStyle: whiteTextStyle,
-              enabledBorder: UnderlineInputBorder(
-                borderSide: BorderSide(
-                  color: greyColor,
-                ),
-              ),
-            ),
-          ),
+          _buildTextFormField(),
         ],
+      ),
+    );
+  }
+
+  Widget _buildTitle() {
+    return Text(
+      title,
+      style: lightGreyTextStyle.copyWith(
+        fontSize: 13,
+      ),
+    );
+  }
+
+  Widget _buildTextFormField() {
+    return TextFormField(
+      style: whiteTextStyle,
+      controller: controller,
+      decoration: InputDecoration(
+        hintText: hintText,
+        hintStyle: whiteTextStyle,
+        enabledBorder: UnderlineInputBorder(
+          borderSide: BorderSide(
+            color: greyColor,
+          ),
+        ),
       ),
     );
   }

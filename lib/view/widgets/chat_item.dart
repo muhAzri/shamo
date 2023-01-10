@@ -14,40 +14,7 @@ class ChatItem extends StatelessWidget {
         margin: const EdgeInsets.only(top: 15),
         child: Column(
           children: [
-            Row(
-              children: [
-                Image.asset(
-                  'assets/images/shop_logo.png',
-                  width: 54,
-                ),
-                const SizedBox(width: 12),
-                Expanded(
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        'Shoe Store',
-                        style: whiteTextStyle.copyWith(
-                          fontSize: 15,
-                        ),
-                      ),
-                      Text(
-                        'Good night, This item is on...',
-                        style: lightGreyTextStyle.copyWith(
-                          fontWeight: light,
-                        ),
-                        overflow: TextOverflow.ellipsis,
-                      ),
-                    ],
-                  ),
-                ),
-                const Spacer(),
-                Text(
-                  'Now',
-                  style: lightGreyTextStyle,
-                )
-              ],
-            ),
+            _buildTopRow(),
             const SizedBox(height: 12),
             Divider(
               thickness: 1,
@@ -56,6 +23,55 @@ class ChatItem extends StatelessWidget {
           ],
         ),
       ),
+    );
+  }
+
+  Widget _buildTopRow() {
+    return Row(
+      children: [
+        Image.asset(
+          'assets/images/shop_logo.png',
+          width: 54,
+        ),
+        const SizedBox(width: 12),
+        Expanded(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              _buildShopName(),
+              _buildLastMessage(),
+            ],
+          ),
+        ),
+        const Spacer(),
+        _buildTimestamp(),
+      ],
+    );
+  }
+
+  Widget _buildShopName() {
+    return Text(
+      'Shoe Store',
+      style: whiteTextStyle.copyWith(
+        fontSize: 15,
+      ),
+    );
+  }
+
+  Widget _buildLastMessage() {
+    return Text(
+      'Good night, This item is on...',
+      style: lightGreyTextStyle.copyWith(
+        fontWeight: light,
+      ),
+      overflow: TextOverflow.ellipsis,
+    );
+  }
+
+  Widget _buildTimestamp() {
+    return Text(
+      'Now',
+      style: lightGreyTextStyle,
     );
   }
 }

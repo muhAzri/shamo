@@ -9,17 +9,19 @@ class MainPage extends StatefulWidget {
   const MainPage({super.key});
 
   @override
-  State<MainPage> createState() => _MainPageState();
+  MainPageState createState() => MainPageState();
 }
 
-class _MainPageState extends State<MainPage> {
+class MainPageState extends State<MainPage> {
   int currentIndex = 0;
 
   @override
   Widget build(BuildContext context) {
     Widget cartButton() {
       return FloatingActionButton(
-        onPressed: () {},
+        onPressed: () {
+          Navigator.pushNamed(context, '/cart');
+        },
         backgroundColor: greenColor,
         child: Image.asset(
           'assets/icons/cart.png',
@@ -131,10 +133,7 @@ class _MainPageState extends State<MainPage> {
       floatingActionButton: cartButton(),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
       bottomNavigationBar: customBottomNav(),
-      body: SafeArea(
-        maintainBottomViewPadding: true,
-        child: body(),
-      ),
+      body: body(),
     );
   }
 }

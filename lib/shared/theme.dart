@@ -52,3 +52,8 @@ TextStyle lightGreyTextStyle = GoogleFonts.poppins(
 TextStyle priceTextStyle = GoogleFonts.poppins(
   color: priceColor,
 );
+
+TextStyle alertTextStyle = GoogleFonts.poppins(
+  color: alertColor,
+);
+

@@ -8,12 +8,9 @@ class ChatPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    Widget header() {
-      return Container(
-        margin: const EdgeInsets.only(bottom: 20),
-        child: AppBar(
-          title: const Text('Message Support'),
-        ),
+    AppBar header() {
+      return AppBar(
+        title: const Text('Message Support'),
       );
     }
 

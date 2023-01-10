@@ -7,19 +7,13 @@ class SplashPage extends StatefulWidget {
   const SplashPage({super.key});
 
   @override
-  State<SplashPage> createState() => _SplashPageState();
+  SplashPageState createState() => SplashPageState();
 }
 
-class _SplashPageState extends State<SplashPage> {
+class SplashPageState extends State<SplashPage> {
   @override
   void initState() {
-    Timer(
-      const Duration(seconds: 3),
-      () {
-        Navigator.pushNamedAndRemoveUntil(
-            context, '/sign-in', (route) => false);
-      },
-    );
+    _navigateToSignInPage();
     super.initState();
   }
 
@@ -28,18 +22,30 @@ class _SplashPageState extends State<SplashPage> {
     return Scaffold(
       backgroundColor: backgroundColor1,
       body: Center(
-        child: Container(
-          width: 130,
-          height: 150,
-          decoration: const BoxDecoration(
-            image: DecorationImage(
-              image: AssetImage(
-                'assets/images/splash.png',
-              ),
-            ),
-          ),
+        child: _buildSplashImage(),
+      ),
+    );
+  }
+
+  Widget _buildSplashImage() {
+    return Container(
+      width: 130,
+      height: 150,
+      decoration: const BoxDecoration(
+        image: DecorationImage(
+          image: AssetImage('assets/images/splash.png'),
         ),
       ),
+    );
+  }
+
+  void _navigateToSignInPage() {
+    Timer(
+      const Duration(seconds: 3),
+      () {
+        Navigator.pushNamedAndRemoveUntil(
+            context, '/sign-in', (route) => false);
+      },
     );
   }
 }

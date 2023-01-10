@@ -148,14 +148,16 @@ class HomePage extends StatelessWidget {
       );
     }
 
-    return ListView(
-      padding: EdgeInsets.symmetric(horizontal: defaultMargin),
-      children: [
-        header(),
-        categories(),
-        popularProduct(),
-        newArrival(),
-      ],
+    return SafeArea(
+      child: ListView(
+        padding: EdgeInsets.symmetric(horizontal: defaultMargin),
+        children: [
+          header(),
+          categories(),
+          popularProduct(),
+          newArrival(),
+        ],
+      ),
     );
   }
 }

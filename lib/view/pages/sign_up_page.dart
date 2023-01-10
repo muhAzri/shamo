@@ -8,65 +8,6 @@ class SignUpPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    Widget header() {
-      return Container(
-        margin: EdgeInsets.only(top: defaultMargin),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Text(
-              'Sign Up',
-              style: whiteTextStyle.copyWith(
-                fontSize: 24,
-                fontWeight: semiBold,
-              ),
-            ),
-            const SizedBox(height: 2),
-            Text('Register and Happy Shoping', style: greyTextStyle)
-          ],
-        ),
-      );
-    }
-
-    Widget body() {
-      return Container(
-        margin: const EdgeInsets.only(
-          top: 50,
-        ),
-        child: Column(
-          children: [
-            const CustomFormField(
-              title: 'Full Name',
-              icon: 'assets/icons/name.png',
-            ),
-            const CustomFormField(
-              title: 'Username',
-              icon: 'assets/icons/username.png',
-            ),
-            const CustomFormField(
-              title: 'Email Address',
-              icon: 'assets/icons/email.png',
-            ),
-            const CustomFormField(
-              title: 'Your Password',
-              icon: 'assets/icons/password.png',
-              isObsecure: true,
-            ),
-            const SizedBox(
-              height: 30,
-            ),
-            CustomButton(
-              title: 'Sign Up',
-              onPressed: () {
-                Navigator.pushNamedAndRemoveUntil(
-                    context, '/home', (route) => false);
-              },
-            ),
-          ],
-        ),
-      );
-    }
-
     return Scaffold(
       backgroundColor: backgroundColor1,
       resizeToAvoidBottomInset: false,
@@ -78,20 +19,83 @@ class SignUpPage extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              header(),
-              body(),
+              _buildHeader(),
+              _buildBody(context),
               const Spacer(),
-              CustomTextButton(
-                text1: 'Already have an account? ',
-                text2: 'Sign In',
-                onTap: () {
-                  Navigator.pop(context);
-                },
-              ),
+              _buildSignInButton(context),
             ],
           ),
         ),
       ),
+    );
+  }
+
+  Widget _buildHeader() {
+    return Container(
+      margin: EdgeInsets.only(top: defaultMargin),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Text(
+            'Sign Up',
+            style: whiteTextStyle.copyWith(
+              fontSize: 24,
+              fontWeight: semiBold,
+            ),
+          ),
+          const SizedBox(height: 2),
+          Text('Register and Happy Shoping', style: greyTextStyle)
+        ],
+      ),
+    );
+  }
+
+  Widget _buildBody(BuildContext context) {
+    return Container(
+      margin: const EdgeInsets.only(
+        top: 50,
+      ),
+      child: Column(
+        children: [
+          const CustomFormField(
+            title: 'Full Name',
+            icon: 'assets/icons/name.png',
+          ),
+          const CustomFormField(
+            title: 'Username',
+            icon: 'assets/icons/username.png',
+          ),
+          const CustomFormField(
+            title: 'Email Address',
+            icon: 'assets/icons/email.png',
+          ),
+          const CustomFormField(
+            title: 'Your Password',
+            icon: 'assets/icons/password.png',
+            isObsecure: true,
+          ),
+          const SizedBox(
+            height: 30,
+          ),
+          CustomButton(
+            title: 'Sign Up',
+            onPressed: () {
+              Navigator.pushNamedAndRemoveUntil(
+                  context, '/home', (route) => false);
+            },
+          ),
+        ],
+      ),
+    );
+  }
+
+  Widget _buildSignInButton(BuildContext context) {
+    return CustomTextButton(
+      text1: 'Already have an account? ',
+      text2: 'Sign In',
+      onTap: () {
+        Navigator.pop(context);
+      },
     );
   }
 }

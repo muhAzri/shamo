@@ -5,6 +5,7 @@ showSnackbar(context, bool isWishlist) {
   snackbar() {
     if (isWishlist) {
       return SnackBar(
+        duration: const Duration(seconds: 1),
         backgroundColor: priceColor,
         content: const Text(
           'Has been added to the Whitelist',
@@ -13,6 +14,7 @@ showSnackbar(context, bool isWishlist) {
       );
     } else {
       return SnackBar(
+        duration: const Duration(seconds: 1),
         backgroundColor: alertColor,
         content: const Text(
           'Has been removed from the Whitelist',

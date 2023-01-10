@@ -23,52 +23,68 @@ class CustomFormField extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Text(
-            title,
-            style: whiteTextStyle.copyWith(
-              fontSize: 16,
-              fontWeight: medium,
-            ),
-          ),
-          Container(
-            height: 50,
-            margin: const EdgeInsets.only(
-              top: 12,
-            ),
-            padding: const EdgeInsets.symmetric(
-              horizontal: 16,
-            ),
-            decoration: BoxDecoration(
-              color: backgroundColor2,
-              borderRadius: BorderRadius.circular(12),
-            ),
-            child: Center(
-              child: Row(
-                children: [
-                  Image.asset(
-                    icon,
-                    width: 17,
-                  ),
-                  const SizedBox(
-                    width: 16,
-                  ),
-                  Expanded(
-                    child: TextFormField(
-                      obscureText: isObsecure,
-                      style: whiteTextStyle,
-                      decoration: InputDecoration.collapsed(
-                        hintText: "Your $title",
-                        hintStyle: greyTextStyle,
-                      ),
-                      controller: controller,
-                    ),
-                  )
-                ],
-              ),
-            ),
-          )
+          _buildTitle(),
+          _buildTextFormField(),
         ],
       ),
+    );
+  }
+
+  Widget _buildTitle() {
+    return Text(
+      title,
+      style: whiteTextStyle.copyWith(
+        fontSize: 16,
+        fontWeight: medium,
+      ),
+    );
+  }
+
+  Widget _buildTextFormField() {
+    return Container(
+      height: 50,
+      margin: const EdgeInsets.only(
+        top: 12,
+      ),
+      padding: const EdgeInsets.symmetric(
+        horizontal: 16,
+      ),
+      decoration: BoxDecoration(
+        color: backgroundColor2,
+        borderRadius: BorderRadius.circular(12),
+      ),
+      child: Center(
+        child: Row(
+          children: [
+            _buildIcon(),
+            const SizedBox(
+              width: 16,
+            ),
+            Expanded(
+              child: _buildInputField(),
+            )
+          ],
+        ),
+      ),
+    );
+  }
+
+  Widget _buildIcon() {
+    return Image.asset(
+      icon,
+      width: 17,
+    );
+  }
+
+  Widget _buildInputField() {
+    return TextFormField(
+      obscureText: isObsecure,
+      style: whiteTextStyle,
+      decoration: InputDecoration.collapsed(
+        hintText: "Your $title",
+        hintStyle: greyTextStyle,
+      ),
+      controller: controller,
     );
   }
 }

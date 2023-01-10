@@ -6,6 +6,10 @@ class PopularItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    return _buildPopularItem(context);
+  }
+
+  Widget _buildPopularItem(BuildContext context) {
     return GestureDetector(
       onTap: () {
         Navigator.pushNamed(context, '/product');
@@ -25,47 +29,68 @@ class PopularItem extends StatelessWidget {
         ),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Image.asset(
-              'assets/images/shoes.png',
-              width: 215,
-              height: 150,
-              fit: BoxFit.cover,
-            ),
-            Padding(
-              padding: const EdgeInsets.symmetric(
-                horizontal: 20,
-              ),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    'Hiking',
-                    style: lightGreyTextStyle.copyWith(
-                      fontWeight: light,
-                    ),
-                  ),
-                  const SizedBox(height: 6),
-                  Text(
-                    'COURT VISION 2.0',
-                    style: blackTextStyle.copyWith(
-                      fontSize: 18,
-                      fontWeight: semiBold,
-                    ),
-                    overflow: TextOverflow.ellipsis,
-                  ),
-                  const SizedBox(height: 6),
-                  Text(
-                    '\$58,67',
-                    style: priceTextStyle.copyWith(
-                      fontWeight: medium,
-                    ),
-                  ),
-                ],
-              ),
-            )
-          ],
+          children: [_buildProductImage(), _buildProductInfo()],
         ),
+      ),
+    );
+  }
+
+  Widget _buildProductImage() {
+    return Image.asset(
+      'assets/images/shoes.png',
+      width: 215,
+      height: 150,
+      fit: BoxFit.cover,
+    );
+  }
+
+  Widget _buildProductInfo() {
+    return Padding(
+      padding: const EdgeInsets.symmetric(
+        horizontal: 20,
+      ),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          _buildProductHiking(),
+          const SizedBox(
+            height: 6,
+          ),
+          _buildProductTitle(),
+          const SizedBox(
+            height: 6,
+          ),
+          _buildProductPrice()
+        ],
+      ),
+    );
+  }
+
+  Widget _buildProductHiking() {
+    return Text(
+      'Hiking',
+      style: lightGreyTextStyle.copyWith(
+        fontWeight: light,
+      ),
+    );
+  }
+
+  Widget _buildProductTitle() {
+    return Text(
+      'COURT VISION 2.0',
+      style: blackTextStyle.copyWith(
+        fontSize: 18,
+        fontWeight: semiBold,
+      ),
+      overflow: TextOverflow.ellipsis,
+    );
+  }
+
+  Widget _buildProductPrice() {
+    return Text(
+      '\$58,67',
+      style: priceTextStyle.copyWith(
+        fontWeight: medium,
       ),
     );
   }

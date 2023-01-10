@@ -22,24 +22,32 @@ class CategoriesItem extends StatelessWidget {
       margin: const EdgeInsets.only(
         right: 16,
       ),
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(12),
-        border: Border.all(
-          color: isSelected ? transparentColor : greyColor,
-        ),
-        color: isSelected ? purpleColor : transparentColor,
-      ),
+      decoration: _buildDecoration(),
       child: Text(
         title,
-        style: isSelected
-            ? whiteTextStyle.copyWith(
-                fontSize: 13,
-              )
-            : greyTextStyle.copyWith(
-                fontSize: 13,
-                fontWeight: light,
-              ),
+        style: _buildTextStyle(),
       ),
     );
+  }
+
+  BoxDecoration _buildDecoration() {
+    return BoxDecoration(
+      borderRadius: BorderRadius.circular(12),
+      border: Border.all(
+        color: isSelected ? transparentColor : greyColor,
+      ),
+      color: isSelected ? purpleColor : transparentColor,
+    );
+  }
+
+  TextStyle _buildTextStyle() {
+    return isSelected
+        ? whiteTextStyle.copyWith(
+            fontSize: 13,
+          )
+        : greyTextStyle.copyWith(
+            fontSize: 13,
+            fontWeight: light,
+          );
   }
 }
